@@ -46,6 +46,41 @@ router.get('/', async (req, res) => {
 /**
  * @swagger
  *
+ * /dictionaries/{id}:
+ *   get:
+ *     summary: Returns an employee by ID
+ *     tags: [Employees]
+ *     produces:
+ *       - application/json
+ *     parameters:
+ *       - $ref: "#/parameters/id"
+ *     responses:
+ *       200:
+ *         description: Ok
+ *         schema:
+ *           $ref: '#/definitions/EmployeeResponse'
+ *       500:
+ *         description: Server error
+ *         schema:
+ *           $ref: '#/definitions/ResponseServerError'
+ *
+ */
+router.get('/:id', async (req, res) => {
+  try {
+    const {id} = req.params;
+    const item = await Employee.findOne({_id: id});
+    if (!item) {
+      return res.notFound('employee not found');
+    }
+    return res.ok({item});
+  } catch (err) {
+    errorHandler(res, 'employees list error')(err);
+  }
+});
+
+/**
+ * @swagger
+ *
  * /employees:
  *   post:
  *     summary: Creates a new employee
