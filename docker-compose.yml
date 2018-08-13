@@ -23,3 +23,9 @@ services:
       - mongodb:mongo
     ports:
       - "8081:80"
+  docs:
+    image: swaggerapi/swagger-ui:latest
+    ports:
+      - "8080:8080"
+    environment:
+      API_URL: http://localhost:4000/swagger/docs/api.json

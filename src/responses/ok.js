@@ -18,6 +18,11 @@ module.exports = function(...args) {
     data = args[0];
   }
 
+  // if serializer is used then use it's data
+  if (this.res.responseData) {
+    data = this.res.responseData;
+  }
+
   const response = {message, ...data};
 
   this.res.status(200).json(response);

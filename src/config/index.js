@@ -3,6 +3,7 @@ const _ = require('lodash');
 const path = require('path');
 
 const config = {
+  appName: 'Remote Trial Task',
   // TODO:
   useMultipleCpus: true,
   mongoose: {

@@ -1,0 +1,34 @@
+/**
+* @swagger
+*
+* definitions:
+*   EmployeePayload:
+*     type: object
+*     required:
+*       - email
+*       - firstName
+*       - lastName
+*     properties:
+*       email:
+*         type: string
+*       firstName:
+*         type: string
+*       lastName:
+*         type: string
+*
+*   EmployeeResponse:
+*     properties:
+*       item:
+*         type: object
+*         $ref: "#/definitions/SerializedEmployee"
+*
+*   EmployeesResponse:
+*     properties:
+*       items:
+*         type: array
+*         items:
+*           $ref: "#/definitions/SerializedEmployee"
+*       pagination:
+*         type: object
+*         $ref: "#/definitions/PaginationObject"
+*/

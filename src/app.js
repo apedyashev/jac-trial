@@ -24,6 +24,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(cors());
 app.use(require('./responses'));
+app.use(require('./serializers'));
 
 server.applyMiddleware({app});
 

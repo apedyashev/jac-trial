@@ -13,6 +13,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@meanie/mongoose-to-json": "^2.2.0",
     "apollo-server": "^2.0.0",
     "apollo-server-express": "^2.0.0",
     "body-parser": "^1.18.3",
@@ -28,8 +29,10 @@
     "include-all": "^4.0.3",
     "lodash": "^4.17.10",
     "mongoose": "^5.2.7",
+    "mongoose-paginate": "^5.0.3",
     "mongoose-timestamp": "^0.6.0",
-    "prettier": "^1.14.2"
+    "prettier": "^1.14.2",
+    "swagger-jsdoc": "^3.0.2"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
