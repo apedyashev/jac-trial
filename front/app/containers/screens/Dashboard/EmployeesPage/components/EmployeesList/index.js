@@ -1,30 +1,13 @@
 // libs
 import React from 'react';
-import gql from 'graphql-tag';
+// import gql from 'graphql-tag';
 // components
 import {Query} from 'react-apollo';
 import InfiniteList from 'components/InfiniteList';
 import {PageLoader} from 'components/ui';
 import EmployeesListItem from '../EmployeesListItem';
+import {GET_EMPLOYEES, PER_PAGE} from 'graphql/Employee';
 
-// TODO: move to a separate file
-export const GET_EMPLOYEES = gql`
-  query Employees($page: Int, $perPage: Int) {
-    employees(page: $page, perPage: $perPage) {
-      docs {
-        id
-        email
-        avatar
-        firstName
-        lastName
-        position
-      }
-      page
-      pages
-    }
-  }
-`;
-export const PER_PAGE = 25;
 const getRowHeight = () => 54;
 // eslint-disable-next-line react/prop-types
 const rowRenderer = ({item, key, style}) => {

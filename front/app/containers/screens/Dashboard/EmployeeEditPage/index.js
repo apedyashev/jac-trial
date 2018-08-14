@@ -2,7 +2,7 @@
 import React from 'react';
 import {PropTypes} from 'prop-types';
 import {connect} from 'react-redux';
-import {GET_EMPLOYEE} from 'containers/screens/Dashboard/EmployeePage';
+import {GET_EMPLOYEE} from 'graphql/Employee';
 // components
 import {Query} from 'react-apollo';
 import {PageLoader} from 'components/ui';

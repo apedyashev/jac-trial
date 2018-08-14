@@ -2,28 +2,14 @@
 import React from 'react';
 import {PropTypes} from 'prop-types';
 import {connect} from 'react-redux';
-import gql from 'graphql-tag';
 // components
 import {Query} from 'react-apollo';
 import {AppContainer} from 'components';
 import {Avatar, Paper, H4, PageLoader, Prompt} from 'components/ui';
-
 import ActionsDropdown from './components/ActionsDropdown';
 // other
+import {GET_EMPLOYEE} from 'graphql/Employee';
 import styles from './index.css';
-
-export const GET_EMPLOYEE = gql`
-  query Employee($id: ID) {
-    employee(id: $id) {
-      id
-      email
-      avatar
-      firstName
-      lastName
-      position
-    }
-  }
-`;
 
 function EmployeePage({employeeId}) {
   console.log('employeeId', employeeId);

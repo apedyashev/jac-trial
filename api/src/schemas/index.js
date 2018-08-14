@@ -14,7 +14,7 @@ const Query = `
 `;
 const Mutation = `
   type Mutation {
-    saveEmployee(id: ID, firstName: String, lastName: String, email: String): Employee
+    saveEmployee(id: ID, firstName: String, lastName: String, email: String, position: String): Employee
     deleteEmployee(id: ID): Employee
   }
 `;
@@ -23,10 +23,10 @@ export default makeExecutableSchema({
   typeDefs: [Query, Mutation, Employee],
   resolvers: {
     Query: {
-      employees: (root, {page, perPage}) => {
-        return EmployeeModel.paginate({}, {page, limit: perPage});
+      employees(root, {page, perPage}) {
+        return EmployeeModel.paginate({}, {page, limit: perPage, sort: {createdAt: -1}});
       },
-      employee: (root, {id}) => {
+      employee(root, {id}) {
         return EmployeeModel.findOne({_id: id});
       },
     },

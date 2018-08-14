@@ -1,25 +1,14 @@
 // libs
 import React from 'react';
 import {PropTypes} from 'prop-types';
-import gql from 'graphql-tag';
 // components
 import {Redirect} from 'react-router';
 import {Mutation} from 'react-apollo';
 import {Dropdown} from 'semantic-ui-react';
-import {
-  GET_EMPLOYEES,
-  PER_PAGE,
-} from 'containers/screens/Dashboard/EmployeesPage/components/EmployeesList';
-
-const DELETE_EMPLOYEE = gql`
-  mutation DeleteEmployee($id: ID) {
-    deleteEmployee(id: $id) {
-      id
-    }
-  }
-`;
+import {DELETE_EMPLOYEE, GET_EMPLOYEES, PER_PAGE} from 'graphql/Employee';
 
 export default function DeleteEmployeeAction({employeeId}) {
+  console.log('DELETE_EMPLOYEE', DELETE_EMPLOYEE);
   return (
     <Mutation
       mutation={DELETE_EMPLOYEE}
@@ -29,6 +18,7 @@ export default function DeleteEmployeeAction({employeeId}) {
             query: GET_EMPLOYEES,
             variables: {page: 1, perPage: PER_PAGE},
           });
+          console.log('employees', employees);
           cache.writeQuery({
             query: GET_EMPLOYEES,
             variables: {page: 1, perPage: PER_PAGE},

@@ -7,6 +7,3 @@ export const makeSelectLocation = () =>
   createSelector(selectRoute, (routeState) => routeState.get('location').toJS());
 export const makeSelectLocationPath = () =>
   createSelector(selectRoute, (routeState) => routeState.getIn(['location', 'pathname']));
-
-// export const makeSelectEntities = () =>
-//   createSelector(selectGlobal, (globalState) => globalState.get('entities'));
