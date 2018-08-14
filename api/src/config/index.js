@@ -1,6 +1,6 @@
-const fs = require('fs');
-const _ = require('lodash');
-const path = require('path');
+import fs from 'fs';
+import _ from 'lodash';
+import path from 'path';
 
 const config = {
   appName: 'Remote Trial Task',
