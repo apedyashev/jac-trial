@@ -8,7 +8,13 @@ import {RESTART_ON_REMOUNT} from 'utils/constants';
 import {ConnectedSwitch, PrivateRoute} from 'utils/router';
 // components
 import {DashboardLayout} from 'containers/Layouts';
-import {EmployeesPage, SettingsPage, NotFoundPage} from 'containers/screens';
+import {
+  EmployeesPage,
+  EmployeeEditPage,
+  EmployeePage,
+  SettingsPage,
+  NotFoundPage,
+} from 'containers/screens';
 import Notification from 'containers/Notification';
 import reducer from './reducer';
 import sidebarReducer from 'containers/SidebarOpenerIcon/reducer';
@@ -27,6 +33,25 @@ export class App extends React.PureComponent {
 
         <React.StrictMode>
           <ConnectedSwitch>
+            <PrivateRoute
+              exact
+              path="/employees/new"
+              layout={DashboardLayout}
+              component={EmployeeEditPage}
+              authed
+            />
+            <PrivateRoute
+              path="/employees/:id/edit"
+              layout={DashboardLayout}
+              component={EmployeeEditPage}
+              authed
+            />
+            <PrivateRoute
+              path="/employees/:id"
+              layout={DashboardLayout}
+              component={EmployeePage}
+              authed
+            />
             <PrivateRoute
               exact
               path="/employees"

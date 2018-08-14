@@ -1,0 +1,9 @@
+.detailsContainer {
+  display: flex;
+}
+.avatar {
+  width: 150px;
+}
+.info {
+  flex: 1;
+}

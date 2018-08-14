@@ -4,6 +4,7 @@ export {default as Topbar} from './Topbar';
 export {default as TopbarButton} from './TopbarButton';
 export {default as Paper} from './Paper';
 
+export {default as Avatar} from './Avatar';
 export {default as Loader} from './Loader';
 export {default as PageLoader} from './PageLoader';
 export {default as ListLoader} from './ListLoader';
@@ -21,6 +22,7 @@ export {default as TopbarIconButton} from './TopbarIconButton';
 export {default as TopbarTitle} from './TopbarTitle';
 export {default as H2} from './typography/H2';
 export {default as H3} from './typography/H3';
+export {default as H4} from './typography/H4';
 export {default as Dimmable} from './Dimmable';
 export {default as Snackbar} from './Snackbar';
 export {default as Icon} from './Icon';

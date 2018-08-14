@@ -2,12 +2,13 @@
 import React from 'react';
 import {PropTypes} from 'prop-types';
 // components
+import {Link} from 'react-router-dom';
 // other
 import styles from './index.css';
 
 export default function EmployeesListItem({data, style}) {
   return (
-    <div style={style} className={styles.root}>
+    <Link to={`/employees/${data.id}`} style={style} className={styles.root}>
       <img src={data.avatar} alt="" className={styles.avatar} />
       <div className={styles.details}>
         <h4>
@@ -15,7 +16,7 @@ export default function EmployeesListItem({data, style}) {
         </h4>
         <span>{data.email}</span>
       </div>
-    </div>
+    </Link>
   );
 }
 EmployeesListItem.propTypes = {};

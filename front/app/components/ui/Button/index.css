@@ -26,6 +26,9 @@
   }
 }
 
+.right {
+  float: right;
+}
 @keyframes anim-moema-1 {
   60% {
     transform: scale3d(0.8, 0.8, 1);

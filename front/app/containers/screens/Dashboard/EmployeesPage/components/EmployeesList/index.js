@@ -8,7 +8,8 @@ import InfiniteList from 'components/InfiniteList';
 import {Prompt, PageLoader} from 'components/ui';
 import EmployeesListItem from '../EmployeesListItem';
 
-const employeesQuery = gql`
+// TODO: move to a separate file
+export const GET_EMPLOYEES = gql`
   query Employees($page: Int, $perPage: Int) {
     employees(page: $page, perPage: $perPage) {
       docs {
@@ -24,7 +25,7 @@ const employeesQuery = gql`
     }
   }
 `;
-const PER_PAGE = 25;
+export const PER_PAGE = 25;
 
 export default function EmployeesList() {
   const getRowHeight = () => 54;
@@ -33,7 +34,7 @@ export default function EmployeesList() {
   };
   return (
     <Query
-      query={employeesQuery}
+      query={GET_EMPLOYEES}
       variables={{
         page: 1,
         perPage: PER_PAGE,

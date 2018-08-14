@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import faker from 'faker';
 import {makeExecutableSchema} from 'graphql-tools';
 import {typeDef as Employee} from './Employee.js';
 
@@ -8,11 +9,12 @@ const EmployeeModel = mongoose.model('Employee');
 const Query = `
   type Query {
     employees(page: Int, perPage: Int): EmployeesResponse
+    employee(id: ID): Employee
   }
 `;
 const Mutation = `
   type Mutation {
-    addEmployee(title: String, author: String): Employee
+    saveEmployee(id: ID, firstName: String, lastName: String, email: String): Employee
   }
 `;
 
@@ -22,6 +24,32 @@ export default makeExecutableSchema({
     Query: {
       employees: (root, {page, perPage}) => {
         return EmployeeModel.paginate({}, {page, limit: perPage});
+      },
+      employee: (root, {id}) => {
+        return EmployeeModel.findOne({_id: id});
+      },
+    },
+    Mutation: {
+      async saveEmployee(root, values) {
+        let employee;
+        console.log('values', values);
+        if (values.id) {
+          employee = await EmployeeModel.findOne({_id: values.id});
+          console.log('employee', employee);
+          if (employee) {
+            employee.set(values);
+            await employee.save();
+          }
+        } else {
+          employee = new EmployeeModel({
+            ...values,
+            // NOTE: fake avatar for demo
+            avatar: faker.image.avatar(),
+          });
+          await employee.save();
+        }
+
+        return employee;
       },
     },
   },
