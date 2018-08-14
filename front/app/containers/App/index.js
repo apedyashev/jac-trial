@@ -2,23 +2,14 @@ import React from 'react';
 import {Helmet} from 'react-helmet';
 import {compose} from 'redux';
 import {Route} from 'react-router-dom';
-import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
 import {RESTART_ON_REMOUNT} from 'utils/constants';
 import {ConnectedSwitch, PrivateRoute} from 'utils/router';
 // components
 import {DashboardLayout} from 'containers/Layouts';
-import {
-  EmployeesPage,
-  EmployeeEditPage,
-  EmployeePage,
-  SettingsPage,
-  NotFoundPage,
-} from 'containers/screens';
+import {EmployeesPage, EmployeeEditPage, EmployeePage, NotFoundPage} from 'containers/screens';
 import Notification from 'containers/Notification';
-import reducer from './reducer';
 import sidebarReducer from 'containers/SidebarOpenerIcon/reducer';
-import saga from './saga';
 
 export class App extends React.PureComponent {
   static propTypes = {};
@@ -59,13 +50,7 @@ export class App extends React.PureComponent {
               component={EmployeesPage}
               authed
             />
-            <PrivateRoute
-              exact
-              path="/settings"
-              layout={DashboardLayout}
-              component={SettingsPage}
-              authed
-            />
+
             <Route path="" component={NotFoundPage} />
           </ConnectedSwitch>
         </React.StrictMode>
@@ -75,12 +60,6 @@ export class App extends React.PureComponent {
   }
 }
 
-const withReducer = injectReducer({key: 'app', reducer});
 const withSidebarReducer = injectReducer({key: 'sidebar', reducer: sidebarReducer});
-const withSaga = injectSaga({key: 'app', saga, mode: RESTART_ON_REMOUNT});
 
-export default compose(
-  withReducer,
-  withSidebarReducer,
-  withSaga
-)(App);
+export default compose(withSidebarReducer)(App);

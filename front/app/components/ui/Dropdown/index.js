@@ -10,6 +10,7 @@ import styles from './index.css';
 // TODO: style this (looks unstyled in storybook)
 export default function Dropdown({
   value,
+  text,
   open,
   closeOnBlur,
   closeOnChange,
@@ -17,6 +18,7 @@ export default function Dropdown({
   options,
   simple,
   item,
+  button,
   icon,
   trigger,
   className,
@@ -29,6 +31,7 @@ export default function Dropdown({
   };
   return (
     <DropdownSUI
+      text={text}
       open={open}
       closeOnBlur={closeOnBlur}
       closeOnChange={closeOnChange}
@@ -39,6 +42,7 @@ export default function Dropdown({
       options={options}
       simple={simple}
       item={item}
+      button={button}
       icon={icon}
       onChange={handleChange}
       onClick={onClick}
@@ -48,12 +52,14 @@ export default function Dropdown({
   );
 }
 Dropdown.propTypes = {
+  text: PropTypes.any,
   value: PropTypes.any,
   open: PropTypes.bool,
   scrolling: PropTypes.bool,
   item: PropTypes.bool,
   icon: PropTypes.any,
   simple: PropTypes.bool,
+  button: PropTypes.bool,
   closeOnChange: PropTypes.bool,
   closeOnBlur: PropTypes.bool,
   className: PropTypes.string,

@@ -7,7 +7,9 @@ import gql from 'graphql-tag';
 import {Link} from 'react-router-dom';
 import {Query} from 'react-apollo';
 import {AppContainer} from 'components';
-import {Avatar, Button, Paper, H4, PageLoader} from 'components/ui';
+import {Avatar, Button, Paper, H4, PageLoader, Prompt} from 'components/ui';
+
+import ActionsDropdown from './components/ActionsDropdown';
 // other
 import styles from './index.css';
 
@@ -36,16 +38,16 @@ function EmployeePage({employeeId}) {
       {({loading, error, data: {employee}, fetchMore}) => {
         if (loading) return <PageLoader />;
         if (error) return <p>Error :(</p>;
+        if (!employee) {
+          return <Prompt title="Employee not found" />;
+        }
 
         return (
           <AppContainer topbar={null}>
             <Paper>
               <H4>
-                Personal file{' '}
-                <Button right positive as={Link} to={`/employees/${employeeId}/edit`}>
-                  Edit
-                </Button>
-                <Button right>Delete</Button>
+                Personal file
+                <ActionsDropdown right employeeId={employeeId} />
               </H4>
               <div className={styles.detailsContainer}>
                 <div className={styles.avatar}>

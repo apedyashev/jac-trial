@@ -10,7 +10,6 @@ import {hideSidebar} from 'containers/SidebarOpenerIcon/actions';
 import {makeSelectLocationPath} from 'containers/App/selectors';
 // components
 import {Sidebar} from 'components/ui';
-import UserMenuButton from '../UserMenuButton';
 // other
 import {sidebarUserType} from 'propTypes/user';
 import styles from './index.css';
@@ -27,13 +26,6 @@ function DashboardSidebar({userData, visible, push, hideSidebar, onHide}) {
         hideSidebar();
       },
     },
-
-    <UserMenuButton
-      key="user-menu-btn"
-      userData={userData}
-      className={styles.profile}
-      onClick={hideSidebar}
-    />,
   ];
 
   return <Sidebar items={items} visible={visible} onHide={onHide} />;

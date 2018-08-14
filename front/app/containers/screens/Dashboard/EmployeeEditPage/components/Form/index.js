@@ -33,28 +33,8 @@ const SAVE_EMPLOYEE = gql`
 class EmployeeEditForm extends React.PureComponent {
   static propTypes = {
     // injected by redux form
-    submitting: PropTypes.bool.isRequired,
     handleSubmit: PropTypes.func.isRequired,
     initialValues: PropTypes.object.isRequired,
-    // mapDispatchToProps
-    // updateProfile: PropTypes.func.isRequired,
-    dispatch: PropTypes.func.isRequired,
-  };
-
-  // componentDidMount() {
-  // for weird some reason enableReinitialize doesn't trigger @@redux-form/INITIALIZE
-  // this.props.dispatch(initialize(formId, this.props.initialValues));
-  // }
-
-  submitForm = (values) => {
-    console.log('values', values.toJS());
-    // return new Promise((resolve, reject) => {
-    //   this.props.updateProfile(values.toJS(), {resolve, reject});
-    // }).catch(({validationErrors}) => {
-    //   if (validationErrors) {
-    //     throw new SubmissionError(validationErrors);
-    //   }
-    // });
   };
 
   render() {
@@ -77,7 +57,6 @@ class EmployeeEditForm extends React.PureComponent {
                   ...employees,
                   docs: [...employees.docs, ...saveEmployee],
                 },
-                // todos: todos.concat([addTodo]),
               },
             });
           } catch (e) {
@@ -96,8 +75,8 @@ class EmployeeEditForm extends React.PureComponent {
             className={styles.root}
           >
             {data &&
-              data.addEmployee &&
-              data.addEmployee.id && <Redirect to={`/employees/${data.addEmployee.id}`} />}
+              data.saveEmployee &&
+              data.saveEmployee.id && <Redirect to={`/employees/${data.saveEmployee.id}`} />}
             <Grid className={styles.grid}>
               <Grid.Column computer={8} mobile={16}>
                 <Paper>

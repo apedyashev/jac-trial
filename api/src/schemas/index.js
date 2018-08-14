@@ -15,6 +15,7 @@ const Query = `
 const Mutation = `
   type Mutation {
     saveEmployee(id: ID, firstName: String, lastName: String, email: String): Employee
+    deleteEmployee(id: ID): Employee
   }
 `;
 
@@ -50,6 +51,14 @@ export default makeExecutableSchema({
         }
 
         return employee;
+      },
+      async deleteEmployee(root, {id}) {
+        const employee = await EmployeeModel.findOne({_id: id});
+        if (employee) {
+          await employee.remove();
+          return employee;
+        }
+        return null;
       },
     },
   },
