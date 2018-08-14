@@ -6,7 +6,7 @@ docker-compose up
 
 ## Start front-end
 
-Front-end should be started without Docker (you need to have nodejs v8 or greater)
+Front-end should be started **without Docker** (you need to have nodejs v8 or greater)
 
 ```
 cd front && yarn install
