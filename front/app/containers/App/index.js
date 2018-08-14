@@ -1,7 +1,7 @@
 import React from 'react';
 import {Helmet} from 'react-helmet';
 import {compose} from 'redux';
-import {Route} from 'react-router-dom';
+import {Route, Redirect} from 'react-router-dom';
 import injectReducer from 'utils/injectReducer';
 import {ConnectedSwitch, PrivateRoute} from 'utils/router';
 // components
@@ -23,6 +23,7 @@ export class App extends React.PureComponent {
 
         <React.StrictMode>
           <ConnectedSwitch>
+            <Redirect exact from="/" to="/employees" />
             <PrivateRoute
               exact
               path="/employees/new"
