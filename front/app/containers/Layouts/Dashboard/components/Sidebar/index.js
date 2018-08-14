@@ -10,12 +10,9 @@ import {hideSidebar} from 'containers/SidebarOpenerIcon/actions';
 import {makeSelectLocationPath} from 'containers/App/selectors';
 // components
 import {Sidebar} from 'components/ui';
-// other
-import {sidebarUserType} from 'propTypes/user';
-import styles from './index.css';
 
 // eslint-disable-next-line no-shadow
-function DashboardSidebar({userData, visible, push, hideSidebar, onHide}) {
+function DashboardSidebar({visible, hideSidebar, onHide}) {
   const items = [
     {
       key: 'employees',
@@ -32,7 +29,6 @@ function DashboardSidebar({userData, visible, push, hideSidebar, onHide}) {
 }
 DashboardSidebar.propTypes = {
   hideSidebar: PropTypes.func.isRequired,
-  push: PropTypes.func.isRequired,
   onHide: PropTypes.func,
   visible: PropTypes.bool,
 };

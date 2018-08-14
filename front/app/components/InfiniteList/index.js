@@ -1,7 +1,6 @@
 // libs
 import React from 'react';
 import {PropTypes} from 'prop-types';
-import Immutable from 'immutable';
 // components
 import {AutoSizer, InfiniteLoader, List} from 'react-virtualized';
 import {ListLoader, EmptyListPrompt} from '../ui';
@@ -11,7 +10,6 @@ class InfiniteList extends React.PureComponent {
   static propTypes = {
     hasNextPage: PropTypes.bool.isRequired,
     perPage: PropTypes.number,
-    // items: PropTypes.instanceOf(Immutable.List).isRequired,
     items: PropTypes.array.isRequired,
     rowRenderer: PropTypes.func.isRequired,
     noRowsRenderer: PropTypes.func.isRequired,

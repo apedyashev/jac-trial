@@ -21,4 +21,8 @@ export default function Avatar({src, small, medium}) {
     />
   );
 }
-Avatar.propTypes = {};
+Avatar.propTypes = {
+  src: PropTypes.string,
+  small: PropTypes.bool,
+  medium: PropTypes.bool,
+};

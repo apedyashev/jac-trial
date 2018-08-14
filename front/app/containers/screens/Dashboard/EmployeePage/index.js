@@ -4,10 +4,9 @@ import {PropTypes} from 'prop-types';
 import {connect} from 'react-redux';
 import gql from 'graphql-tag';
 // components
-import {Link} from 'react-router-dom';
 import {Query} from 'react-apollo';
 import {AppContainer} from 'components';
-import {Avatar, Button, Paper, H4, PageLoader, Prompt} from 'components/ui';
+import {Avatar, Paper, H4, PageLoader, Prompt} from 'components/ui';
 
 import ActionsDropdown from './components/ActionsDropdown';
 // other
@@ -35,9 +34,13 @@ function EmployeePage({employeeId}) {
         id: employeeId,
       }}
     >
-      {({loading, error, data: {employee}, fetchMore}) => {
-        if (loading) return <PageLoader />;
-        if (error) return <p>Error :(</p>;
+      {({loading, error, data: {employee}}) => {
+        if (loading) {
+          return <PageLoader />;
+        }
+        if (error) {
+          return <p>Error :(</p>;
+        }
         if (!employee) {
           return <Prompt title="Employee not found" />;
         }
@@ -68,7 +71,9 @@ function EmployeePage({employeeId}) {
     </Query>
   );
 }
-EmployeePage.propTypes = {};
+EmployeePage.propTypes = {
+  employeeId: PropTypes.string.isRequired,
+};
 
 export default connect(
   (state, ownProps) => ({

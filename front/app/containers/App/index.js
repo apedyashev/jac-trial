@@ -3,10 +3,9 @@ import {Helmet} from 'react-helmet';
 import {compose} from 'redux';
 import {Route} from 'react-router-dom';
 import injectReducer from 'utils/injectReducer';
-import {RESTART_ON_REMOUNT} from 'utils/constants';
 import {ConnectedSwitch, PrivateRoute} from 'utils/router';
 // components
-import {DashboardLayout} from 'containers/Layouts';
+import {DashboardLayout} from 'containers/layouts';
 import {EmployeesPage, EmployeeEditPage, EmployeePage, NotFoundPage} from 'containers/screens';
 import Notification from 'containers/Notification';
 import sidebarReducer from 'containers/SidebarOpenerIcon/reducer';

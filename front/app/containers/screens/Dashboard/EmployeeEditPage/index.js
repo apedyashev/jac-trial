@@ -29,7 +29,9 @@ function EmployeeEditPage({employeeId}) {
     </Query>
   );
 }
-EmployeeEditPage.propTypes = {};
+EmployeeEditPage.propTypes = {
+  employeeId: PropTypes.string.isRequired,
+};
 
 export default connect(
   (state, ownProps) => ({

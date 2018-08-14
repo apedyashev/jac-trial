@@ -19,4 +19,13 @@ export default function EmployeesListItem({data, style}) {
     </Link>
   );
 }
-EmployeesListItem.propTypes = {};
+EmployeesListItem.propTypes = {
+  data: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    firstName: PropTypes.string.isRequired,
+    lastName: PropTypes.string.isRequired,
+    position: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+  }).isRequired,
+  style: PropTypes.object,
+};

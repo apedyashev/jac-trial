@@ -26,4 +26,7 @@ export default function ActionsDropdown({employeeId, right}) {
     <Dropdown button options={options} text="Actions" className={cn({[styles.right]: right})} />
   );
 }
-ActionsDropdown.propTypes = {};
+ActionsDropdown.propTypes = {
+  employeeId: PropTypes.string.isRequired,
+  right: PropTypes.bool,
+};

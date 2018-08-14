@@ -5,7 +5,6 @@ import gql from 'graphql-tag';
 // components
 import {Redirect} from 'react-router';
 import {Mutation} from 'react-apollo';
-import {Button} from 'components/ui';
 import {Dropdown} from 'semantic-ui-react';
 import {
   GET_EMPLOYEES,
@@ -47,7 +46,7 @@ export default function DeleteEmployeeAction({employeeId}) {
         }
       }}
     >
-      {(deleteEmployee, {loading, error, data}) => {
+      {(deleteEmployee, {loading, data}) => {
         console.log('data', data);
         if (data && data.deleteEmployee && data.deleteEmployee.id) {
           return <Redirect to="/employees" />;
@@ -67,4 +66,6 @@ export default function DeleteEmployeeAction({employeeId}) {
     </Mutation>
   );
 }
-DeleteEmployeeAction.propTypes = {};
+DeleteEmployeeAction.propTypes = {
+  employeeId: PropTypes.string.isRequired,
+};

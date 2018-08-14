@@ -1,7 +1,6 @@
 // libs
 import React from 'react';
 import {PropTypes} from 'prop-types';
-import {connect} from 'react-redux';
 import {Mutation} from 'react-apollo';
 import gql from 'graphql-tag';
 import {
@@ -10,8 +9,8 @@ import {
 } from 'containers/screens/Dashboard/EmployeesPage/components/EmployeesList';
 // components
 import {Redirect} from 'react-router';
-import {Form, Field, SubmissionError, reduxForm, initialize} from 'redux-form/immutable';
-import {Button, Input, Paper, ReduxFormFields} from 'components/ui';
+import {Form, Field, reduxForm} from 'redux-form/immutable';
+import {Button, Paper, ReduxFormFields} from 'components/ui';
 import {Grid} from 'semantic-ui-react';
 // other
 import styles from './index.css';
@@ -49,13 +48,14 @@ class EmployeeEditForm extends React.PureComponent {
               query: GET_EMPLOYEES,
               variables: {page: 1, perPage: PER_PAGE},
             });
+
             cache.writeQuery({
               query: GET_EMPLOYEES,
               variables: {page: 1, perPage: PER_PAGE},
               data: {
                 employees: {
                   ...employees,
-                  docs: [...employees.docs, ...saveEmployee],
+                  docs: [...employees.docs, ...[saveEmployee]],
                 },
               },
             });
@@ -65,7 +65,7 @@ class EmployeeEditForm extends React.PureComponent {
           }
         }}
       >
-        {(saveEmployee, {loading, error, data}) => (
+        {(saveEmployee, {loading, data}) => (
           <Form
             onSubmit={handleSubmit((values) => {
               return saveEmployee({
@@ -132,30 +132,13 @@ const validate = (values) => {
 
   if (!values.get('email')) {
     errors.email = 'required';
+  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.get('email'))) {
+    errors.email = 'invalid email address';
   }
 
   return errors;
 };
 
-// const mapStateToProps = () =>
-// createStructuredSelector({
-// initialValues: makeSelectProfileData(),
-// });
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    dispatch,
-    // updateProfile: (values, {resolve, reject} = {}) =>
-    //   dispatch(updateProfile(values, {resolve, reject})),
-  };
-};
-//
-EmployeeEditForm = connect(
-  // mapStateToProps,
-  null,
-  mapDispatchToProps
-)(EmployeeEditForm);
-//
 export default reduxForm({
   form: formId,
   validate,

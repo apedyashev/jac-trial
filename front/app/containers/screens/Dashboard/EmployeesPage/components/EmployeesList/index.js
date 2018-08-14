@@ -1,11 +1,10 @@
 // libs
 import React from 'react';
-import {PropTypes} from 'prop-types';
 import gql from 'graphql-tag';
 // components
 import {Query} from 'react-apollo';
 import InfiniteList from 'components/InfiniteList';
-import {Prompt, PageLoader} from 'components/ui';
+import {PageLoader} from 'components/ui';
 import EmployeesListItem from '../EmployeesListItem';
 
 // TODO: move to a separate file
@@ -26,12 +25,13 @@ export const GET_EMPLOYEES = gql`
   }
 `;
 export const PER_PAGE = 25;
+const getRowHeight = () => 54;
+// eslint-disable-next-line react/prop-types
+const rowRenderer = ({item, key, style}) => {
+  return <EmployeesListItem key={key} style={style} data={item} />;
+};
 
 export default function EmployeesList() {
-  const getRowHeight = () => 54;
-  const rowRenderer = ({item, key, style}) => {
-    return <EmployeesListItem key={key} style={style} data={item} />;
-  };
   return (
     <Query
       query={GET_EMPLOYEES}
@@ -41,11 +41,14 @@ export default function EmployeesList() {
       }}
     >
       {({loading, error, data, fetchMore}) => {
-        if (loading) return <PageLoader />;
-        if (error) return <p>Error :(</p>;
+        if (loading) {
+          return <PageLoader />;
+        }
+        if (error) {
+          return <p>Error :(</p>;
+        }
 
-        console.log('data.employees.docs', data.employees);
-        const {page, limit, pages} = data.employees;
+        const {page, pages} = data.employees;
         return (
           <InfiniteList
             hasNextPage={page < pages}
@@ -55,7 +58,7 @@ export default function EmployeesList() {
             dataLoadingMessage="Loading employees, please wait"
             noRowsMessage="No employees in the list"
             getRowHeight={getRowHeight}
-            loadNextPage={({page, perPage}) => {
+            loadNextPage={({page}) => {
               fetchMore({
                 variables: {
                   page,
