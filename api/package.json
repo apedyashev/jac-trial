@@ -4,8 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "prestart": "yarn install",
     "start": "NODE_PATH=./src nodemon index.js",
-    "test": "NODE_PATH=./src NODE_ENV=test mocha --compilers js:babel-core/register --exit --timeout 10000 'test/bootstrap.test.js' 'test/**/*.test.js'",
+    "test":
+      "NODE_PATH=./src NODE_ENV=test mocha --compilers js:babel-core/register --exit --timeout 10000 'test/bootstrap.test.js' 'test/**/*.test.js'",
     "lint": "eslint .",
     "prettier": "prettier --write './**/*.js'"
   },
