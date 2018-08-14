@@ -1,0 +1,41 @@
+/* https://codepen.io/vasansr/pen/gPXJxB?editors=1100 */
+$text-width: 180px;
+$text-width-mobile: 100px;
+$height: 30px;
+.row {
+  display: flex;
+  flex-direction: row;
+  flex-grow: 0;
+  flex-wrap: wrap;
+  width: 100%;
+  height: $height;
+  line-height: $height;
+  border-bottom: 1px solid #ccc;
+  background-color: #fff;
+  &:hover {
+    background-color: #f2f2f2;
+  }
+  border-left-width: 3px;
+  border-left-style: solid;
+  border-left-color: rgb(255, 255, 255, 0);
+  &.learned {
+    border-left-color: $secondary-color;
+  }
+}
+
+.text {
+  flex-grow: 1;
+  -webkit-flex-grow: 1;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: $text-width;
+  @media only screen and (max-width: 320px) {
+    width: $text-width-mobile;
+  }
+}
+
+.checkbox {
+  width: 50px;
+  padding: 3px 0 0 13px;
+}

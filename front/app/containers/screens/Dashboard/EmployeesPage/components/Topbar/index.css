@@ -1,0 +1,44 @@
+.root {
+  border-top: 0 !important;
+  border-left: 0 !important;
+  border-right: 0 !important;
+  border-radius: 0 !important;
+  @media only screen and (min-width: 320px) {
+    width: calc(100vw - 150px) !important;
+  }
+  @media only screen and (max-width: 320px) {
+    width: 100% !important;
+  }
+  top: 0;
+  z-index: 1000;
+  margin-bottom: 0 !important;
+
+  .stipPadding {
+    padding: 0 !important;
+  }
+
+  .stipTopBottomPadding {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  /* .searchBarMenu {
+    @media only screen and (max-width: 320px) {
+      padding-left: 5px !important;
+      padding-right: 5px !important;
+    }
+  } */
+}
+
+/* orientation: landscape  */
+/* @media only screen and (min-device-width: 320px) and (max-device-width: 640px) and (orientation: landscape) { */
+@media only screen and (max-width: 640px) {
+  .root :global(.left.menu) {
+    width: 100% !important;
+  }
+  .searchBarMenu {
+    flex-grow: 1 !important;
+    padding-left: 5px !important;
+    padding-right: 5px !important;
+  }
+}

@@ -1,0 +1,25 @@
+.root {
+  height: 54px;
+  cursor: pointer;
+  color: $primary-color !important;
+  &:hover {
+    background-color: $menu-item-hover-bg-color !important;
+  }
+
+  & > :global(.item > .text) {
+    color: $primary-color !important;
+  }
+  :global(.action button) {
+    color: $font-color-on-primary !important;
+  }
+  input::placeholder {
+    color: $primary-color !important;
+    -webkit-filter: opacity(0.4);
+    filter: opacity(0.4);
+  }
+}
+.noSeparator {
+  &::before {
+    width: 0 !important;
+  }
+}

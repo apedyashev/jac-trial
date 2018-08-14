@@ -1,0 +1,22 @@
+$font-color: #ccc;
+$font-color-inactive: #bcbec0;
+.root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
+  padding: 10px;
+  width: 100%;
+}
+
+.title {
+  color: $font-color;
+  text-align: center;
+}
+
+.subtitle {
+  color: $font-color-inactive;
+  margin-bottom: 10px;
+  text-align: center;
+}

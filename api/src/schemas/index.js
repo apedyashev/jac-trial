@@ -7,7 +7,7 @@ const EmployeeModel = mongoose.model('Employee');
 
 const Query = `
   type Query {
-    employees: [Employee]
+    employees(page: Int, perPage: Int): EmployeesResponse
   }
 `;
 const Mutation = `
@@ -20,7 +20,9 @@ export default makeExecutableSchema({
   typeDefs: [Query, Mutation, Employee],
   resolvers: {
     Query: {
-      employees: () => EmployeeModel.find(),
+      employees: (root, {page, perPage}) => {
+        return EmployeeModel.paginate({}, {page, limit: perPage});
+      },
     },
   },
 });

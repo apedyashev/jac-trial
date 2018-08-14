@@ -1,0 +1,25 @@
+.dropdown {
+  div[role='alert'] {
+    padding-right: 10px !important;
+  }
+  &:hover {
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+  }
+  > i {
+    right: 10px !important;
+    margin: 0 !important;
+    float: right !important;
+    position: absolute !important;
+  }
+  :global .menu {
+    border-top-left-radius: 0 !important;
+    border-top-right-radius: 0 !important;
+    margin-top: 0 !important;
+  }
+  &:global(.scrolling) {
+    :global .menu {
+      overflow-y: auto !important;
+    }
+  }
+}

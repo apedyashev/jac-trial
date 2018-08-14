@@ -1,0 +1,25 @@
+.content {
+  /* min-height: calc(100vh - $topbar-height) !important; */
+  min-height: 100vh !important;
+  /* padding-top: $topbar-height; */
+
+  /* mobile */
+  /* @media only screen and (max-width: 640px) {
+    display: flex;
+  } */
+  &.withPadding {
+    @media only screen and (min-width: 640px) {
+      padding: $main-content-padding;
+    }
+  }
+}
+.withMobileTopbar {
+  @media only screen and (max-width: 640px) {
+    padding-top: $topbar-height;
+  }
+}
+.withDesktopTopbar {
+  @media only screen and (min-width: 640px) {
+    padding-top: $topbar-height;
+  }
+}

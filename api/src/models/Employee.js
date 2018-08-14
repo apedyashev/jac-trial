@@ -19,6 +19,8 @@ const Schema = mongoose.Schema;
  *            type: string
  *          avatar:
  *            type: string
+ *          position:
+ *            type: string
  */
 const schema = new Schema({
   email: {
@@ -34,6 +36,10 @@ const schema = new Schema({
   },
   lastName: {
     type: String,
+  },
+  position: {
+    type: String,
+    default: 'engineer',
   },
   avatar: {
     type: String,

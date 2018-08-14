@@ -1,0 +1,78 @@
+$loader-size: 40px;
+$loader-speed: 1s;
+$width: 10rem;
+
+$grid-gutter-width: 3rem;
+$app-color: #00b4d5;
+
+.label {
+  padding-top: 5px;
+  display: block;
+  color: #bcbec0;
+}
+.loader {
+  margin: 0 auto;
+  &--pulse {
+    height: $loader-size;
+    margin: ($grid-gutter-width / 2) auto;
+    position: relative;
+    width: $loader-size;
+
+    > div {
+      animation: loader-pulse 1.15s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
+      border: 0 solid $app-color;
+      border-radius: 50%;
+      box-sizing: border-box;
+      height: 0;
+      left: 50%;
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 0;
+    }
+  }
+}
+
+@keyframes loader-pulse {
+  0% {
+    height: 0;
+    width: 0;
+  }
+
+  30% {
+    border-width: 0.8rem;
+    height: $loader-size;
+    opacity: 1;
+    width: $loader-size;
+  }
+
+  100% {
+    border-width: 0;
+    height: $loader-size;
+    opacity: 0;
+    width: $loader-size;
+  }
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes dash {
+  0% {
+    stroke-dasharray: 1, 200;
+    stroke-dashoffset: 0;
+  }
+
+  50% {
+    stroke-dasharray: 89, 200;
+    stroke-dashoffset: -35;
+  }
+
+  100% {
+    stroke-dasharray: 89, 200;
+    stroke-dashoffset: -124;
+  }
+}

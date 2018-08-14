@@ -1,0 +1,11 @@
+.root:global(.ui.sidebar) {
+  border-top: 0 !important;
+  border-bottom: 0 !important;
+  overflow-y: visible !important;
+  z-index: 1001;
+  background-color: $primary-color !important;
+  color: $font-color-on-primary !important;
+  :global(.item) {
+    color: $font-color-on-primary !important;
+  }
+}

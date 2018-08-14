@@ -1,0 +1,7 @@
+.root {
+  color: $primary-color;
+  span {
+    font-size: 80%;
+    color: lighten(@primary-2-color, 10%);
+  }
+}

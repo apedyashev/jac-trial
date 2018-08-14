@@ -8,12 +8,15 @@
 *       - email
 *       - firstName
 *       - lastName
+*       - position
 *     properties:
 *       email:
 *         type: string
 *       firstName:
 *         type: string
 *       lastName:
+*         type: string
+*       position:
 *         type: string
 *
 *   EmployeeResponse:
